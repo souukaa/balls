@@ -1,0 +1,221 @@
+/*! fear incarnate by Astrid */@keyframes cv-channel-select{from{right:100%}to{right:0}}@keyframes cv-card-loading{0%{opacity:.66}50%{opacity:.33}100%{opacity:.66}}/*! fear incarnate by Astrid */.visual-refresh .vc-settings-quickActions-pill{background:var(--hsl-card-shading);border:1px solid rgba(0,0,0,0)}.visual-refresh .vc-settings-quickActions-pill:hover{background:var(--hsl-card-shading);box-shadow:none;border-color:var(--hsl-main-color);transform:none}.visual-refresh .vc-addon-card{background:var(--hsl-card-shading);border:none}.visual-refresh .vc-addon-card:hover{background:var(--hsl-card-shading);transform:none;box-shadow:none}.visual-refresh .vc-notification-root{background:var(--hsl-popout-shading)}/*! fear incarnate by Astrid */:is(.theme-light,.theme-dark) #vc-spotify-player{background:rgba(0,0,0,0)}.vc-pindms-collapse-icon{color:currentColor}.visual-refresh div#magane div.stickerWindow,.visual-refresh div#magane .stickersModal .modal-content{background:var(--background-image) center/cover no-repeat;background-attachment:var(--background-attachment);filter:var(--background-filter)}.visual-refresh div#magane div.stickerWindow:before,.visual-refresh div#magane .stickersModal .modal-content:before{background:var(--hsl-background-shading);content:"";position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1}.visual-refresh div#magane div.stickerWindow div.packs-toolbar{background:var(--hsl-card-shading)}
+
+
+/* =========================================================
+   ASTRID CALL OVERLAY CLEANUP
+   Removes:
+   - bottom-left call panel blob
+   - top-middle blurry call control blob
+   Keeps:
+   - background image
+   - Fear... flicker
+   - clickable call buttons
+   ========================================================= */
+
+/* Fear text + irregular flicker */
+@keyframes fearIrregularFlicker {
+  0%, 4%, 7%, 19%, 22%, 41%, 44%, 63%, 67%, 82%, 86%, 100% {
+    opacity: 1;
+    filter: brightness(1.15) drop-shadow(0 0 5px rgba(182, 209, 194, 0.65));
+    text-shadow:
+      0 0 3px rgba(182, 209, 194, 0.65),
+      0 0 9px rgba(182, 209, 194, 0.45),
+      0 0 16px rgba(182, 209, 194, 0.25);
+  }
+  5%, 20%, 42%, 64%, 83% { opacity: 0.15; filter: brightness(0.35); text-shadow: none; }
+  6%, 21%, 43%, 66%, 85% { opacity: 0.72; filter: brightness(0.8); }
+  28%, 29% { opacity: 0.32; filter: brightness(0.55); }
+  56%, 57% { opacity: 0.05; filter: brightness(0.2); }
+}
+
+.visual-refresh:not(.platform-osx) .leading_c38106::before,
+.info__2debe::after {
+  content: "Fear..." !important;
+  animation: fearIrregularFlicker 5.8s steps(1,end) infinite !important;
+  color: #b6d1c2 !important;
+}
+
+.visual-refresh:not(.platform-osx) .leading_c38106::after {
+  content: "" !important;
+  display: none !important;
+}
+
+/* Kill Discord custom theme color source */
+.custom-theme-background,
+.theme-dark.custom-theme-background,
+.theme-light.custom-theme-background,
+body.custom-theme-background,
+:root {
+  --custom-theme-background: transparent !important;
+  --custom-theme-primary-color: transparent !important;
+  --custom-theme-secondary-color: transparent !important;
+}
+
+/* Keep actual background image */
+.bg__960e4,
+.visual-refresh .bg__960e4 {
+  background: var(--background-image) var(--background-position)/var(--background-size) no-repeat !important;
+  background-attachment: var(--background-attachment) !important;
+  filter: var(--background-filter) !important;
+  z-index: -1 !important;
+}
+
+/* Remove top-middle blurry blob behind call controls */
+.visual-refresh :is(
+  .bottomControls_bfe55a,
+  .buttonSection__1405b,
+  .contextMenuNub_ab6641,
+  .controlSection_bfe55a,
+  .controlButton_ab6641,
+  .participantsButton__211d1,
+  [class*="bottomControls"],
+  [class*="buttonSection"],
+  [class*="controlSection"],
+  [class*="contextMenuNub"],
+  [class*="participantsButton"]
+) {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+/* Keep the actual circular call buttons visible/clickable */
+.visual-refresh :is(
+  .colorable_f1ceac,
+  .button__67645,
+  .button__201d5,
+  .controlButton_ab6641 button,
+  [class*="colorable_"],
+  [class*="controlButton"] button,
+  [class*="button_"][role="button"]
+) {
+  background-color: rgba(0,0,0,0.38) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Keep disconnect button readable */
+.visual-refresh :is(
+  .colorable_f1ceac.disconnect_f1ceac,
+  [class*="disconnect"]
+) {
+  background-color: rgba(120, 35, 35, 0.85) !important;
+}
+
+/* Remove bottom-left call/user panel blob */
+.visual-refresh :is(
+  .panels_c48ade,
+  .container__37e49,
+  .avatarWrapper__37e49,
+  .wrapper_e131a9,
+  .container_e131a9,
+  .panel__5dec7,
+  .activityPanel_c48ade,
+  .rtcConnectionStatus__06d62,
+  .connection__06d62,
+  .voiceButtonsContainer_e131a9,
+  .actionButtons_e131a9,
+  [class*="panels_"],
+  [class*="container_"][class*="37e49"],
+  [class*="wrapper_"][class*="e131a9"],
+  [class*="container_"][class*="e131a9"],
+  [class*="activityPanel"],
+  [class*="connection_"],
+  [class*="rtcConnectionStatus"],
+  [class*="voiceButtonsContainer"],
+  [class*="actionButtons"]
+) {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+/* Keep tiny panel buttons clickable and visible */
+.visual-refresh :is(
+  .panels_c48ade button,
+  .container__37e49 button,
+  .wrapper_e131a9 button,
+  .container_e131a9 button,
+  [class*="panels_"] button,
+  [class*="container_"][class*="37e49"] button,
+  [class*="e131a9"] button
+) {
+  background-color: rgba(0,0,0,0.28) !important;
+  border-radius: 8px !important;
+}
+
+/* Nuke big call area tints */
+.visual-refresh :is(
+  .wrapper_cb9592,
+  .channelChatWrapper_cb9592,
+  .callContainer_cb9592,
+  .root_bfe55a,
+  .gradientBackground__11664,
+  .gradientContainer_bfe55a,
+  .videoGrid_a21736,
+  .tileContainer__71eb2,
+  .tile__2f4f7,
+  .background__1fed1,
+  [class*="callContainer"],
+  [class*="channelChatWrapper"],
+  [class*="gradientBackground"],
+  [class*="gradientContainer"],
+  [class*="videoGrid"],
+  [class*="tileContainer"]
+) {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+}
+
+/* Inputs/popouts stay readable */
+.visual-refresh :is(
+  .channelTextArea__74017,
+  .scrollableContainer__74017,
+  .form_f75fb0,
+  .searchBar__97492,
+  .searchBar__35e86 .searchBarComponent__35e86,
+  .input__0f084,
+  .addFriendInputWrapper__72ba7
+) {
+  background: rgba(0,0,0,0.30) !important;
+  background-color: rgba(0,0,0,0.30) !important;
+  border-color: rgba(182,209,194,0.22) !important;
+}
+
+.visual-refresh :is(
+  .menu_c1e9c4,
+  .tooltipPrimary__382e7,
+  .tooltipBrand__382e7,
+  .popout__3f413,
+  .contentWrapper__08434,
+  .autocomplete__13533,
+  .quickswitcher_ac6cb0,
+  .recentMentionsPopout__95796,
+  .root__49fc1,
+  .modal__9a792
+) {
+  background: rgba(0,0,0,0.72) !important;
+  background-color: rgba(0,0,0,0.72) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Final blur killer for the call UI specifically */
+.visual-refresh [class*="call"] *,
+.visual-refresh [class*="voice"] *,
+.visual-refresh [class*="bottomControls"] *,
+.visual-refresh [class*="buttonSection"] *,
+.visual-refresh [class*="panels"] * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
