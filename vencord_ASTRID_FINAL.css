@@ -1,0 +1,327 @@
+/*! fear incarnate by Astrid */@keyframes cv-channel-select{from{right:100%}to{right:0}}@keyframes cv-card-loading{0%{opacity:.66}50%{opacity:.33}100%{opacity:.66}}/*! fear incarnate by Astrid */.visual-refresh .vc-settings-quickActions-pill{background:var(--hsl-card-shading);border:1px solid rgba(0,0,0,0)}.visual-refresh .vc-settings-quickActions-pill:hover{background:var(--hsl-card-shading);box-shadow:none;border-color:var(--hsl-main-color);transform:none}.visual-refresh .vc-addon-card{background:var(--hsl-card-shading);border:none}.visual-refresh .vc-addon-card:hover{background:var(--hsl-card-shading);transform:none;box-shadow:none}.visual-refresh .vc-notification-root{background:var(--hsl-popout-shading)}/*! fear incarnate by Astrid */:is(.theme-light,.theme-dark) #vc-spotify-player{background:rgba(0,0,0,0)}.vc-pindms-collapse-icon{color:currentColor}.visual-refresh div#magane div.stickerWindow,.visual-refresh div#magane .stickersModal .modal-content{background:var(--background-image) center/cover no-repeat;background-attachment:var(--background-attachment);filter:var(--background-filter)}.visual-refresh div#magane div.stickerWindow:before,.visual-refresh div#magane .stickersModal .modal-content:before{background:var(--hsl-background-shading);content:"";position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1}.visual-refresh div#magane div.stickerWindow div.packs-toolbar{background:var(--hsl-card-shading)}
+
+
+/* =========================================================
+   ASTRID NUKE PATCH
+   Nukes UI panel backgrounds while keeping:
+   - real background image
+   - Fear... flicker
+   - buttons/popouts readable
+   ========================================================= */
+
+/* Fear text + irregular flicker */
+@keyframes fearIrregularFlicker {
+  0%, 4%, 7%, 19%, 22%, 41%, 44%, 63%, 67%, 82%, 86%, 100% {
+    opacity: 1;
+    filter: brightness(1.15) drop-shadow(0 0 5px rgba(182, 209, 194, 0.65));
+    text-shadow:
+      0 0 3px rgba(182, 209, 194, 0.65),
+      0 0 9px rgba(182, 209, 194, 0.45),
+      0 0 16px rgba(182, 209, 194, 0.25);
+  }
+  5%, 20%, 42%, 64%, 83% {
+    opacity: 0.15;
+    filter: brightness(0.35);
+    text-shadow: none;
+  }
+  6%, 21%, 43%, 66%, 85% { opacity: 0.72; filter: brightness(0.8); }
+  28%, 29% { opacity: 0.32; filter: brightness(0.55); }
+  56%, 57% { opacity: 0.05; filter: brightness(0.2); }
+}
+
+.visual-refresh:not(.platform-osx) .leading_c38106::before,
+.info__2debe::after {
+  content: "Fear..." !important;
+  animation: fearIrregularFlicker 5.8s steps(1,end) infinite !important;
+  color: #b6d1c2 !important;
+}
+
+.visual-refresh:not(.platform-osx) .leading_c38106::after {
+  content: "" !important;
+  display: none !important;
+}
+
+/* Replace theme variables with transparent/dark instead of green */
+:root,
+.theme-dark,
+.theme-light,
+.visual-refresh,
+.theme-dark.visual-refresh,
+.theme-light.visual-refresh {
+  --main-color: #b6d1c2 !important;
+  --hover-color: #d7e6dd !important;
+  --hsl-main-color: #b6d1c2 !important;
+  --hsl-hover-color: #d7e6dd !important;
+
+  --background-primary: transparent !important;
+  --background-secondary: transparent !important;
+  --background-secondary-alt: transparent !important;
+  --background-tertiary: transparent !important;
+  --background-accent: rgba(182,209,194,0.16) !important;
+  --background-floating: rgba(0,0,0,0.72) !important;
+
+  --bg-base-primary: transparent !important;
+  --bg-base-secondary: transparent !important;
+  --bg-base-tertiary: transparent !important;
+  --bg-surface-overlay: rgba(0,0,0,0.68) !important;
+  --bg-surface-raised: rgba(0,0,0,0.45) !important;
+  --bg-surface-high: rgba(0,0,0,0.35) !important;
+
+  --hsl-background-shading: transparent !important;
+  --hsl-card-shading: rgba(0,0,0,0.20) !important;
+  --hsl-card-shading-inverted: rgba(255,255,255,0.07) !important;
+  --hsl-popout-shading: rgba(0,0,0,0.72) !important;
+  --hsl-modal-shading: rgba(0,0,0,0.76) !important;
+  --hsl-input-shading: rgba(0,0,0,0.32) !important;
+  --hsl-input-border-shading: rgba(182,209,194,0.22) !important;
+
+  --background-mod-subtle: rgba(0,0,0,0.14) !important;
+  --background-mod-normal: rgba(0,0,0,0.22) !important;
+  --background-mod-strong: rgba(0,0,0,0.34) !important;
+}
+
+/* KEEP THE REAL BACKGROUND IMAGE ALONE */
+.bg__960e4,
+.visual-refresh .bg__960e4 {
+  background: var(--background-image) var(--background-position)/var(--background-size) no-repeat !important;
+  background-attachment: var(--background-attachment) !important;
+  filter: var(--background-filter) !important;
+  z-index: -1 !important;
+}
+
+/* NUKE Discord app surface backgrounds, but NOT the image layer above */
+.visual-refresh :is(
+  .app__160d8,
+  .app_a3002d,
+  .base_c48ade,
+  .content_c48ade,
+  .page_c48ade,
+  .sidebar_c48ade,
+  .sidebarList_c48ade,
+  .guilds_c48ade,
+  .tree_ef3116,
+  .scroller_ef3116,
+  .itemsContainer_ef3116,
+  .container__2637a,
+  .container_f37cb1,
+  .header_f37cb1,
+  .scroller__629e4,
+  .privateChannels__35e86,
+  .scroller__99e7c,
+  .searchBar__35e86,
+  .container__133bf,
+  .tabBody__133bf,
+  .peopleColumn__133bf,
+  .nowPlayingColumn__133bf,
+  .container__7d20c,
+  .scroller__7d20c,
+  .chat_f75fb0,
+  .chatContent_f75fb0,
+  .content_f75fb0,
+  .container_c8ffbb,
+  .membersWrap_c8ffbb,
+  .members_c8ffbb,
+  .member__5d473,
+  .container__9293f,
+  .themed__9293f,
+  .bar_c38106,
+  .title_f75fb0,
+  .panels_c48ade,
+  .container__37e49,
+  .wrapper_cb9592,
+  .channelChatWrapper_cb9592,
+  .callContainer_cb9592,
+  .root_bfe55a,
+  .gradientBackground__11664,
+  .gradientContainer_bfe55a,
+  .videoGrid_a21736,
+  .tileContainer__71eb2,
+  .tile__2f4f7,
+  .background__1fed1,
+  .container__722ff,
+  .callContainer__722ff
+) {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+/* Nuke newer/randomized Discord surfaces by partial class names */
+.visual-refresh :is(
+  [class*="sidebar"],
+  [class*="guilds"],
+  [class*="tree"],
+  [class*="itemsContainer"],
+  [class*="privateChannels"],
+  [class*="peopleColumn"],
+  [class*="nowPlayingColumn"],
+  [class*="callContainer"],
+  [class*="channelChatWrapper"],
+  [class*="videoGrid"],
+  [class*="tileContainer"],
+  [class*="gradientBackground"],
+  [class*="gradientContainer"]
+) {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+/* Leave actual content readable with very light dark glass */
+.visual-refresh :is(
+  .channel__972a0,
+  .interactive_bf202d,
+  .interactive__972a0,
+  .layout__20a53,
+  .outer_bf1984,
+  .section__00943,
+  .emptyCard__7e549,
+  .itemCard__7e549,
+  .card__84e3e,
+  .container__0f2e8,
+  .searchResult__02a39,
+  .messageContainer__95796,
+  .messages__1ccd1,
+  .upload_aa605f,
+  .container_ca49a1,
+  .container__9a337,
+  .container_faa96b
+) {
+  background: rgba(0,0,0,0.16) !important;
+  background-color: rgba(0,0,0,0.16) !important;
+}
+
+/* Selected/friend tabs but not ugly green */
+.visual-refresh :is(
+  .tabBar__133bf .item_b3f026,
+  .tabBar__133bf .addFriend__133bf,
+  .topPill_b3f026 .item_b3f026,
+  .side_b3f026 .item_b3f026,
+  .actionButton_f8fa06
+) {
+  background: rgba(0,0,0,0.18) !important;
+  background-color: rgba(0,0,0,0.18) !important;
+}
+
+.visual-refresh :is(
+  .tabBar__133bf .item_b3f026[aria-selected=true],
+  .tabBar__133bf .addFriend__133bf[aria-selected=true],
+  .topPill_b3f026 .item_b3f026.selected_b3f026,
+  .side_b3f026 .item_b3f026.selected_b3f026,
+  .selected_bf202d,
+  .selected__972a0
+) {
+  background: rgba(182,209,194,0.22) !important;
+  background-color: rgba(182,209,194,0.22) !important;
+}
+
+/* Inputs/search/message bars */
+.visual-refresh :is(
+  .channelTextArea__74017,
+  .scrollableContainer__74017,
+  .form_f75fb0,
+  .searchBar__97492,
+  .searchBar__35e86 .searchBarComponent__35e86,
+  .input__0f084,
+  .addFriendInputWrapper__72ba7
+) {
+  background: rgba(0,0,0,0.32) !important;
+  background-color: rgba(0,0,0,0.32) !important;
+  border-color: rgba(182,209,194,0.22) !important;
+}
+
+/* Call controls and bottom user controls readable */
+.visual-refresh :is(
+  .buttonSection__1405b,
+  .bottomControls_bfe55a,
+  .quickSelectPopout_ebaca5,
+  .participantsButton__211d1,
+  .controlButton_ab6641,
+  [class*="bottomControls"],
+  [class*="buttonSection"],
+  [class*="participantsButton"],
+  [class*="controlButton"]
+) {
+  background: rgba(0,0,0,0.45) !important;
+  background-color: rgba(0,0,0,0.45) !important;
+  backdrop-filter: blur(6px);
+}
+
+/* Popouts/modals readable */
+.visual-refresh :is(
+  .menu_c1e9c4,
+  .tooltipPrimary__382e7,
+  .tooltipBrand__382e7,
+  .popout__3f413,
+  .contentWrapper__08434,
+  .autocomplete__13533,
+  .quickswitcher_ac6cb0,
+  .recentMentionsPopout__95796,
+  .root__49fc1,
+  .modal__9a792,
+  .browser__9a792,
+  .keyboardShortcutsModal_f061f6
+) {
+  background: rgba(0,0,0,0.72) !important;
+  background-color: rgba(0,0,0,0.72) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Kill inline/leftover green surfaces only */
+.visual-refresh *[style*="63, 95, 82"],
+.visual-refresh *[style*="77, 123, 93"],
+.visual-refresh *[style*="#3f5f52"],
+.visual-refresh *[style*="#4d7b5d"],
+.visual-refresh *[style*="#2a3f36"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+
+/* ===== ASTRID FINAL CALL + BLUR REMOVAL ===== */
+
+/* Remove ALL blur globally for call UI */
+.visual-refresh [class*="call"] *,
+.visual-refresh [class*="voice"] *,
+.visual-refresh [class*="bottomControls"] *,
+.visual-refresh [class*="buttonSection"] *,
+.visual-refresh [class*="panels"] * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Remove top call control blob */
+.visual-refresh :is(
+  .bottomControls_bfe55a,
+  .buttonSection__1405b,
+  .controlSection_bfe55a,
+  [class*="bottomControls"],
+  [class*="buttonSection"],
+  [class*="controlSection"]
+) {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove bottom-left panel blob */
+.visual-refresh :is(
+  .panels_c48ade,
+  .container__37e49,
+  .wrapper_e131a9,
+  .container_e131a9,
+  [class*="panels_"],
+  [class*="container_"][class*="37e49"],
+  [class*="e131a9"]
+) {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+/* Keep buttons visible */
+.visual-refresh button {
+  background-color: rgba(0,0,0,0.3) !important;
+  border-radius: 6px !important;
+}
