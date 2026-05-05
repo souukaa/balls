@@ -1,0 +1,289 @@
+/*! fear incarnate by Astrid */@keyframes cv-channel-select{from{right:100%}to{right:0}}@keyframes cv-card-loading{0%{opacity:.66}50%{opacity:.33}100%{opacity:.66}}/*! fear incarnate by Astrid */.visual-refresh .vc-settings-quickActions-pill{background:var(--hsl-card-shading);border:1px solid rgba(0,0,0,0)}.visual-refresh .vc-settings-quickActions-pill:hover{background:var(--hsl-card-shading);box-shadow:none;border-color:var(--hsl-main-color);transform:none}.visual-refresh .vc-addon-card{background:var(--hsl-card-shading);border:none}.visual-refresh .vc-addon-card:hover{background:var(--hsl-card-shading);transform:none;box-shadow:none}.visual-refresh .vc-notification-root{background:var(--hsl-popout-shading)}/*! fear incarnate by Astrid */:is(.theme-light,.theme-dark) #vc-spotify-player{background:rgba(0,0,0,0)}.vc-pindms-collapse-icon{color:currentColor}.visual-refresh div#magane div.stickerWindow,.visual-refresh div#magane .stickersModal .modal-content{background:var(--background-image) center/cover no-repeat;background-attachment:var(--background-attachment);filter:var(--background-filter)}.visual-refresh div#magane div.stickerWindow:before,.visual-refresh div#magane .stickersModal .modal-content:before{background:var(--hsl-background-shading);content:"";position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1}.visual-refresh div#magane div.stickerWindow div.packs-toolbar{background:var(--hsl-card-shading)}
+
+
+/* =========================================================
+   Astrid Horror Theme Final Patch
+   ========================================================= */
+
+/* Fear text + irregular flicker */
+@keyframes fearIrregularFlicker {
+  0%, 4%, 7%, 19%, 22%, 41%, 44%, 63%, 67%, 82%, 86%, 100% {
+    opacity: 1;
+    filter: brightness(1.15) drop-shadow(0 0 5px rgba(182, 209, 194, 0.65));
+    text-shadow:
+      0 0 3px rgba(182, 209, 194, 0.65),
+      0 0 9px rgba(182, 209, 194, 0.45),
+      0 0 16px rgba(182, 209, 194, 0.25);
+  }
+  5%, 20%, 42%, 64%, 83% {
+    opacity: 0.15;
+    filter: brightness(0.35);
+    text-shadow: none;
+  }
+  6%, 21%, 43%, 66%, 85% { opacity: 0.72; filter: brightness(0.8); }
+  28%, 29% { opacity: 0.32; filter: brightness(0.55); }
+  56%, 57% { opacity: 0.05; filter: brightness(0.2); }
+}
+
+.visual-refresh:not(.platform-osx) .leading_c38106::before,
+.info__2debe::after {
+  content: "Fear..." !important;
+  animation: fearIrregularFlicker 5.8s steps(1,end) infinite !important;
+  color: #b6d1c2 !important;
+}
+
+.visual-refresh:not(.platform-osx) .leading_c38106::after {
+  content: "" !important;
+  display: none !important;
+}
+
+/* Main green replacement variables */
+.visual-refresh,
+.theme-dark.visual-refresh,
+.theme-light.visual-refresh {
+  --hsl-background-shading: rgba(0, 0, 0, 0.24) !important;
+  --hsl-card-shading: rgba(0, 0, 0, 0.28) !important;
+  --hsl-card-shading-inverted: rgba(255, 255, 255, 0.08) !important;
+  --hsl-popout-shading: rgba(0, 0, 0, 0.66) !important;
+  --hsl-modal-shading: rgba(0, 0, 0, 0.70) !important;
+  --hsl-input-shading: rgba(0, 0, 0, 0.30) !important;
+  --hsl-input-border-shading: rgba(182, 209, 194, 0.22) !important;
+
+  --background-primary: rgba(0, 0, 0, 0.16) !important;
+  --background-secondary: rgba(0, 0, 0, 0.18) !important;
+  --background-secondary-alt: rgba(0, 0, 0, 0.22) !important;
+  --background-tertiary: rgba(0, 0, 0, 0.12) !important;
+  --background-accent: rgba(182, 209, 194, 0.16) !important;
+  --background-floating: rgba(0, 0, 0, 0.66) !important;
+
+  --bg-base-primary: rgba(0, 0, 0, 0.16) !important;
+  --bg-base-secondary: rgba(0, 0, 0, 0.18) !important;
+  --bg-base-tertiary: rgba(0, 0, 0, 0.12) !important;
+  --bg-surface-overlay: rgba(0, 0, 0, 0.64) !important;
+  --bg-surface-raised: rgba(0, 0, 0, 0.42) !important;
+  --bg-surface-high: rgba(0, 0, 0, 0.34) !important;
+
+  --background-mod-subtle: rgba(0, 0, 0, 0.20) !important;
+  --background-mod-normal: rgba(0, 0, 0, 0.28) !important;
+  --background-mod-strong: rgba(0, 0, 0, 0.40) !important;
+}
+
+/* Keep the actual background visible */
+:is(.visual-refresh .app__160d8,
+.visual-refresh .app_a3002d,
+.visual-refresh .bg__960e4,
+.visual-refresh .base_c48ade,
+.visual-refresh .content_c48ade,
+.visual-refresh .page_c48ade) {
+  background-color: transparent !important;
+}
+
+/* DMs / friends page / now playing */
+:is(
+.visual-refresh .privateChannels__35e86,
+.visual-refresh .scroller__99e7c,
+.visual-refresh .searchBar__35e86,
+.visual-refresh .container__133bf,
+.visual-refresh .tabBody__133bf,
+.visual-refresh .peopleColumn__133bf,
+.visual-refresh .nowPlayingColumn__133bf,
+.visual-refresh .container__7d20c,
+.visual-refresh .scroller__7d20c,
+.visual-refresh .outer_bf1984,
+.visual-refresh .section__00943,
+.visual-refresh .emptyCard__7e549,
+.visual-refresh .itemCard__7e549,
+.visual-refresh .interactive_bf202d,
+.visual-refresh .interactive__972a0,
+.visual-refresh .channel__972a0,
+.visual-refresh .channel__972a0 .layout__20a53,
+.visual-refresh .container__9293f,
+.visual-refresh .themed__9293f
+) {
+  background: rgba(0, 0, 0, 0.20) !important;
+  background-color: rgba(0, 0, 0, 0.20) !important;
+}
+
+/* Friend tabs/buttons */
+:is(
+.visual-refresh .tabBar__133bf .item_b3f026,
+.visual-refresh .tabBar__133bf .addFriend__133bf,
+.visual-refresh .topPill_b3f026 .item_b3f026,
+.visual-refresh .side_b3f026 .item_b3f026,
+.visual-refresh .actionButton_f8fa06,
+.visual-refresh .blockedIgnoredSettingsNotice__6811a
+) {
+  background-color: rgba(0, 0, 0, 0.22) !important;
+}
+
+:is(
+.visual-refresh .tabBar__133bf .item_b3f026[aria-selected=true],
+.visual-refresh .tabBar__133bf .addFriend__133bf[aria-selected=true],
+.visual-refresh .topPill_b3f026 .item_b3f026.selected_b3f026,
+.visual-refresh .side_b3f026 .item_b3f026.selected_b3f026
+) {
+  background-color: rgba(182, 209, 194, 0.28) !important;
+  color: #d7e6dd !important;
+}
+
+/* Server rail */
+:is(
+.visual-refresh .guilds_c48ade,
+.visual-refresh .guilds_c48ade .scroller_ef3116,
+.visual-refresh .guilds_c48ade .itemsContainer_ef3116,
+.visual-refresh .guilds_c48ade .tree_ef3116,
+.visual-refresh [class^="guilds_"],
+.visual-refresh [class*=" guilds_"],
+.visual-refresh [class^="itemsContainer_"],
+.visual-refresh [class*=" itemsContainer_"],
+.visual-refresh [class^="tree_"],
+.visual-refresh [class*=" tree_"]
+) {
+  background: rgba(0, 0, 0, 0.08) !important;
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Channel sidebar */
+:is(
+.visual-refresh .sidebar_c48ade,
+.visual-refresh .sidebarList_c48ade,
+.visual-refresh .container__2637a,
+.visual-refresh .scroller__629e4,
+.visual-refresh .container_f37cb1,
+.visual-refresh .header_f37cb1,
+.visual-refresh .animatedContainer_f37cb1,
+.visual-refresh .bannerImage_f37cb1
+) {
+  background: rgba(0, 0, 0, 0.18) !important;
+  background-color: rgba(0, 0, 0, 0.18) !important;
+}
+
+/* Chat and member/sidebar surfaces */
+:is(
+.visual-refresh .chat_f75fb0,
+.visual-refresh .chatContent_f75fb0,
+.visual-refresh .content_f75fb0,
+.visual-refresh .container_c8ffbb,
+.visual-refresh .membersWrap_c8ffbb,
+.visual-refresh .members_c8ffbb,
+.visual-refresh .member__5d473,
+.visual-refresh .container__0f2e8,
+.visual-refresh .searchResultsWrap_a9e706,
+.visual-refresh .searchHeader_f3b986
+) {
+  background: rgba(0, 0, 0, 0.16) !important;
+  background-color: rgba(0, 0, 0, 0.16) !important;
+}
+
+/* Call / voice area */
+:is(
+.visual-refresh .wrapper_cb9592,
+.visual-refresh .channelChatWrapper_cb9592,
+.visual-refresh .callContainer_cb9592,
+.visual-refresh .root_bfe55a,
+.visual-refresh .gradientBackground__11664,
+.visual-refresh .gradientContainer_bfe55a,
+.visual-refresh .videoGrid_a21736,
+.visual-refresh .tileContainer__71eb2,
+.visual-refresh .tile__2f4f7,
+.visual-refresh .background__1fed1,
+.visual-refresh .container__722ff,
+.visual-refresh .callContainer__722ff,
+.visual-refresh [class^="callContainer_"],
+.visual-refresh [class*=" callContainer_"],
+.visual-refresh [class^="channelChatWrapper_"],
+.visual-refresh [class*=" channelChatWrapper_"],
+.visual-refresh [class*="videoGrid"],
+.visual-refresh [class*="tileContainer"],
+.visual-refresh [class*="gradientBackground"],
+.visual-refresh [class*="gradientContainer"]
+) {
+  background: rgba(0, 0, 0, 0.10) !important;
+  background-color: rgba(0, 0, 0, 0.10) !important;
+  border-color: transparent !important;
+}
+
+/* Call controls readable */
+:is(
+.visual-refresh .buttonSection__1405b,
+.visual-refresh .bottomControls_bfe55a,
+.visual-refresh .quickSelectPopout_ebaca5,
+.visual-refresh .participantsButton__211d1,
+.visual-refresh .controlButton_ab6641,
+.visual-refresh [class*="bottomControls"],
+.visual-refresh [class*="buttonSection"],
+.visual-refresh [class*="participantsButton"],
+.visual-refresh [class*="controlButton"]
+) {
+  background: rgba(0, 0, 0, 0.44) !important;
+  background-color: rgba(0, 0, 0, 0.44) !important;
+  backdrop-filter: blur(6px);
+}
+
+/* Inputs/search/message bar */
+:is(
+.visual-refresh .channelTextArea__74017,
+.visual-refresh .scrollableContainer__74017,
+.visual-refresh .form_f75fb0,
+.visual-refresh .searchBar__97492,
+.visual-refresh .searchBar__35e86 .searchBarComponent__35e86,
+.visual-refresh .input__0f084,
+.visual-refresh .addFriendInputWrapper__72ba7
+) {
+  background: rgba(0, 0, 0, 0.30) !important;
+  background-color: rgba(0, 0, 0, 0.30) !important;
+  border-color: rgba(182, 209, 194, 0.22) !important;
+}
+
+/* Cards, activity panels, small leftover green blocks */
+:is(
+.visual-refresh .card__84e3e,
+.visual-refresh .card_b5493b,
+.visual-refresh .container_da4aee,
+.visual-refresh .mainTableContainer__09a38,
+.visual-refresh .container_bc0d35,
+.visual-refresh .container__19cf2,
+.visual-refresh .container__5682d,
+.visual-refresh .container_cec934,
+.visual-refresh .profileCard__5d7c9,
+.visual-refresh .channelRow_e4503a,
+.visual-refresh .optionButtonWrapper__270d7,
+.visual-refresh .container__9a337,
+.visual-refresh .container_faa96b,
+.visual-refresh .container_ca49a1,
+.visual-refresh .searchResult__02a39,
+.visual-refresh .messageContainer__95796,
+.visual-refresh .messages__1ccd1,
+.visual-refresh .upload_aa605f
+) {
+  background: rgba(0, 0, 0, 0.26) !important;
+  background-color: rgba(0, 0, 0, 0.26) !important;
+}
+
+/* Popouts/modals */
+:is(
+.visual-refresh .menu_c1e9c4,
+.visual-refresh .tooltipPrimary__382e7,
+.visual-refresh .tooltipBrand__382e7,
+.visual-refresh .popout__3f413,
+.visual-refresh .contentWrapper__08434,
+.visual-refresh .autocomplete__13533,
+.visual-refresh .quickswitcher_ac6cb0,
+.visual-refresh .recentMentionsPopout__95796,
+.visual-refresh .root__49fc1,
+.visual-refresh .modal__9a792,
+.visual-refresh .browser__9a792,
+.visual-refresh .keyboardShortcutsModal_f061f6
+) {
+  background: rgba(0, 0, 0, 0.66) !important;
+  background-color: rgba(0, 0, 0, 0.66) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Final pass: kill obvious green leftovers without destroying buttons/icons */
+.visual-refresh [style*="rgb(63, 95, 82)"],
+.visual-refresh [style*="#3f5f52"],
+.visual-refresh [style*="rgb(77, 123, 93)"],
+.visual-refresh [style*="#4d7b5d"] {
+  background-color: rgba(0, 0, 0, 0.24) !important;
+}
