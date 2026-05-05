@@ -1,0 +1,33 @@
+/*! fear incarnate by Astrid */@keyframes cv-channel-select{from{right:100%}to{right:0}}@keyframes cv-card-loading{0%{opacity:.66}50%{opacity:.33}100%{opacity:.66}}/*! fear incarnate by Astrid */.visual-refresh .vc-settings-quickActions-pill{background:var(--hsl-card-shading);border:1px solid rgba(0,0,0,0)}.visual-refresh .vc-settings-quickActions-pill:hover{background:var(--hsl-card-shading);box-shadow:none;border-color:var(--hsl-main-color);transform:none}.visual-refresh .vc-addon-card{background:var(--hsl-card-shading);border:none}.visual-refresh .vc-addon-card:hover{background:var(--hsl-card-shading);transform:none;box-shadow:none}.visual-refresh .vc-notification-root{background:var(--hsl-popout-shading)}/*! fear incarnate by Astrid */:is(.theme-light,.theme-dark) #vc-spotify-player{background:rgba(0,0,0,0)}.vc-pindms-collapse-icon{color:currentColor}.visual-refresh div#magane div.stickerWindow,.visual-refresh div#magane .stickersModal .modal-content{background:var(--background-image) center/cover no-repeat;background-attachment:var(--background-attachment);filter:var(--background-filter)}.visual-refresh div#magane div.stickerWindow:before,.visual-refresh div#magane .stickersModal .modal-content:before{background:var(--hsl-background-shading);content:"";position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1}.visual-refresh div#magane div.stickerWindow div.packs-toolbar{background:var(--hsl-card-shading)}
+
+
+@keyframes fearFlicker {
+  0% { opacity: 1; }
+  2% { opacity: 0.2; }
+  3% { opacity: 1; }
+  7% { opacity: 0.4; }
+  8% { opacity: 1; }
+  20% { opacity: 1; }
+  21% { opacity: 0.1; }
+  23% { opacity: 1; }
+  35% { opacity: 0.6; }
+  36% { opacity: 1; }
+  50% { opacity: 1; }
+  52% { opacity: 0.3; }
+  53% { opacity: 1; }
+  70% { opacity: 1; }
+  72% { opacity: 0.2; }
+  74% { opacity: 1; }
+  85% { opacity: 0.5; }
+  86% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.info__2debe::after {
+    animation: fearFlicker 2.7s infinite;
+    color: #b6d1c2;
+    text-shadow:
+        0 0 3px rgba(182,209,194,0.5),
+        0 0 8px rgba(182,209,194,0.3),
+        0 0 12px rgba(182,209,194,0.2);
+}
