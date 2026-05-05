@@ -1,0 +1,209 @@
+/*! fear incarnate by Astrid */@keyframes cv-channel-select{from{right:100%}to{right:0}}@keyframes cv-card-loading{0%{opacity:.66}50%{opacity:.33}100%{opacity:.66}}/*! fear incarnate by Astrid */.visual-refresh .vc-settings-quickActions-pill{background:var(--hsl-card-shading);border:1px solid rgba(0,0,0,0)}.visual-refresh .vc-settings-quickActions-pill:hover{background:var(--hsl-card-shading);box-shadow:none;border-color:var(--hsl-main-color);transform:none}.visual-refresh .vc-addon-card{background:var(--hsl-card-shading);border:none}.visual-refresh .vc-addon-card:hover{background:var(--hsl-card-shading);transform:none;box-shadow:none}.visual-refresh .vc-notification-root{background:var(--hsl-popout-shading)}/*! fear incarnate by Astrid */:is(.theme-light,.theme-dark) #vc-spotify-player{background:rgba(0,0,0,0)}.vc-pindms-collapse-icon{color:currentColor}.visual-refresh div#magane div.stickerWindow,.visual-refresh div#magane .stickersModal .modal-content{background:var(--background-image) center/cover no-repeat;background-attachment:var(--background-attachment);filter:var(--background-filter)}.visual-refresh div#magane div.stickerWindow:before,.visual-refresh div#magane .stickersModal .modal-content:before{background:var(--hsl-background-shading);content:"";position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1}.visual-refresh div#magane div.stickerWindow div.packs-toolbar{background:var(--hsl-card-shading)}
+
+
+/* === Astrid Horror Text + Irregular Flicker === */
+@keyframes fearIrregularFlicker {
+  0%, 4%, 7%, 19%, 22%, 41%, 44%, 63%, 67%, 82%, 86%, 100% {
+    opacity: 1;
+    filter: brightness(1.15) drop-shadow(0 0 5px rgba(182, 209, 194, 0.65));
+    text-shadow:
+      0 0 3px rgba(182, 209, 194, 0.65),
+      0 0 9px rgba(182, 209, 194, 0.45),
+      0 0 16px rgba(182, 209, 194, 0.25);
+  }
+  5%, 20%, 42%, 64%, 83% {
+    opacity: 0.15;
+    filter: brightness(0.35);
+    text-shadow: none;
+  }
+  6%, 21%, 43%, 66%, 85% { opacity: 0.72; filter: brightness(0.8); }
+  28%, 29% { opacity: 0.32; filter: brightness(0.55); }
+  56%, 57% { opacity: 0.05; filter: brightness(0.2); }
+}
+
+.visual-refresh:not(.platform-osx) .leading_c38106::before,
+.info__2debe::after {
+  content: "Fear..." !important;
+  animation: fearIrregularFlicker 5.8s steps(1,end) infinite !important;
+  color: #b6d1c2 !important;
+}
+
+.visual-refresh:not(.platform-osx) .leading_c38106::after {
+  content: "" !important;
+  display: none !important;
+}
+
+/* === HARD GREEN REMOVAL / TRANSPARENT DISCORD LAYERS === */
+:root,
+.theme-dark,
+.theme-light,
+.visual-refresh {
+  --background-primary: transparent !important;
+  --background-secondary: transparent !important;
+  --background-secondary-alt: transparent !important;
+  --background-tertiary: transparent !important;
+  --background-accent: transparent !important;
+  --bg-base-primary: transparent !important;
+  --bg-base-secondary: transparent !important;
+  --bg-base-tertiary: transparent !important;
+  --bg-surface-overlay: rgba(0,0,0,0.55) !important;
+  --bg-surface-raised: rgba(0,0,0,0.45) !important;
+  --bg-surface-high: rgba(0,0,0,0.35) !important;
+  --background-floating: rgba(0,0,0,0.6) !important;
+  --background-mod-subtle: rgba(0,0,0,0.22) !important;
+  --background-mod-normal: rgba(0,0,0,0.30) !important;
+  --background-mod-strong: rgba(0,0,0,0.42) !important;
+}
+
+/* major app/shell surfaces */
+:is(
+  .app__160d8,
+  .app_a3002d,
+  .bg__960e4,
+  .base_c48ade,
+  .content_c48ade,
+  .page_c48ade,
+  .sidebar_c48ade,
+  .guilds_c48ade,
+  .wrapper_ef3116,
+  .scroller_ef3116,
+  .itemsContainer_ef3116,
+  .tree_ef3116,
+  .container__2637a,
+  .sidebarList_c48ade,
+  .privateChannels__35e86,
+  .scroller__99e7c,
+  .container__133bf,
+  .tabBody__133bf,
+  .peopleColumn__133bf,
+  .nowPlayingColumn__133bf,
+  .chat_f75fb0,
+  .chatContent_f75fb0,
+  .content_f75fb0,
+  .container_c8ffbb,
+  .membersWrap_c8ffbb,
+  .members_c8ffbb,
+  .container__7d20c,
+  .scroller__7d20c,
+  .container__551b0,
+  .scroller__23746,
+  .applicationStore_f07d62,
+  .shop__6db1d,
+  .shopScroll__6db1d
+) {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* server list / guild rail */
+:is(
+  nav[class*="guilds"],
+  div[class*="guilds"],
+  div[class*="tree"],
+  div[class*="itemsContainer"],
+  div[class*="scroller"][class*="guild"],
+  .guilds_c48ade *,
+  .wrapper_ef3116 *,
+  .scroller_ef3116 *,
+  .itemsContainer_ef3116 *
+) {
+  background-color: transparent !important;
+}
+
+/* call / voice surfaces */
+:is(
+  .wrapper_cb9592,
+  .channelChatWrapper_cb9592,
+  .callContainer_cb9592,
+  .root_bfe55a,
+  .videoGrid_a21736,
+  .tileContainer__71eb2,
+  .tile__2f4f7,
+  .background__1fed1,
+  .container__722ff,
+  .callContainer__722ff,
+  .gradientContainer_bfe55a,
+  .gradientBackground__11664,
+  .stageSection__00943,
+  .scroller__56ccd,
+  .participantsButton__211d1,
+  .participantsButton__211d1:hover
+) {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+/* voice/call controls should stay readable but not green */
+:is(
+  .buttonSection__1405b,
+  .controlButton_ab6641,
+  .contextMenuNub_ab6641,
+  .quickSelectPopout_ebaca5,
+  .bottomControls_bfe55a,
+  .toolbar__9293f,
+  .panels_c48ade,
+  .container__37e49,
+  .avatarWrapper__37e49
+) {
+  background: rgba(0,0,0,0.35) !important;
+  background-color: rgba(0,0,0,0.35) !important;
+  backdrop-filter: blur(6px);
+}
+
+/* top bars / headers */
+:is(
+  .themed__9293f,
+  .container__9293f,
+  .children__9293f,
+  .toolbar__9293f,
+  .bar_c38106,
+  .title_f75fb0,
+  .chatHeaderBar_dc83f5,
+  .chatHeaderBar_a5700d,
+  .header_f37cb1,
+  .header__0b563
+) {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* text input / popouts */
+:is(
+  .channelTextArea__74017,
+  .scrollableContainer__74017,
+  .form_f75fb0,
+  .searchBar__97492,
+  .input__0f084
+) {
+  background: rgba(0,0,0,0.25) !important;
+  background-color: rgba(0,0,0,0.25) !important;
+}
+
+:is(
+  .menu_c1e9c4,
+  .tooltipPrimary__382e7,
+  .tooltipBrand__382e7,
+  .popout__3f413,
+  .contentWrapper__08434,
+  .autocomplete__13533,
+  .quickswitcher_ac6cb0,
+  .recentMentionsPopout__95796,
+  .root__49fc1
+) {
+  background: rgba(0,0,0,0.62) !important;
+  background-color: rgba(0,0,0,0.62) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* kill remaining green-tinted theme panels, but preserve actual buttons/cards */
+:is(
+  [class*="sidebar"],
+  [class*="guilds"],
+  [class*="callContainer"],
+  [class*="channelChatWrapper"],
+  [class*="voice"],
+  [class*="stage"]
+) {
+  background-color: transparent !important;
+}
